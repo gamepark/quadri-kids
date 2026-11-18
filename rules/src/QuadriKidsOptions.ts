@@ -9,7 +9,7 @@ export type QuadriKidsOptions = {
   mode?: GameMode
   /** Competitive: the players may choose to play with the Quadri Objective cards worth 4 and 5 (decision Q29). */
   quadriCards?: boolean
-  /** Cooperative: "Ici il faut réaliser 15 objectifs", more to make it harder ([H30]). */
+  /** Cooperative: "Ici il faut réaliser 15 objectifs", more to make it harder (decision H30). */
   cooperativeObjectives?: number
 }
 

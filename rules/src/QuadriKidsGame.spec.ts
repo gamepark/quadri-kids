@@ -124,7 +124,7 @@ describe('Completing objectives', () => {
     layStartingSquare(game, [M, Y, M, C])
     const rules = new QuadriKidsRules(game)
     placeTile(rules, M, 0, 2)
-    // [H8] the objective of the other player is validated too, outside their turn
+    // Decision H8: the objective of the other player is validated too, outside their turn
     expect(rules.material(MaterialType.ObjectiveCard).location(LocationType.CompletedObjectives).player(second).getItem()?.id).toBe(26)
     expect(rules.material(MaterialType.ObjectiveCard).location(LocationType.PlayerHand).player(second).length).toBe(2)
     expect(rules.getScore(second)).toBe(3)

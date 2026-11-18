@@ -26,8 +26,8 @@ export class QuadriKidsSetup extends MaterialGameSetup<number, MaterialType, Loc
 
   /**
    * "Poser 4 tuiles pour former un carré de 4 couleurs différentes au centre de la table"
-   * [H20] the 4 colors of the starting square are drawn at random.
-   * [H19] the 4 tiles of the square are taken from the 12 of each color: piles of 11.
+   * Decision H20: the 4 colors of the starting square are drawn at random.
+   * Decision H19: the 4 tiles of the square are taken from the 12 of each color: piles of 11.
    */
   setupTiles() {
     const square = [

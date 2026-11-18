@@ -8,7 +8,7 @@ import { RuleId } from './RuleId'
 /**
  * "les parents peuvent utiliser des cartes Objectif de valeur 4 ou 5 du jeu Quadri": with the option, each
  * player chooses the Quadri Kids cards or the Quadri cards worth 4 and 5, then gets 2 cards of that deck
- * (decision Q29). [H29] Whoever chooses the Quadri cards plays with them alone: nothing is added to the Kids deck.
+ * (decision Q29). Decision H29: Whoever chooses the Quadri cards plays with them alone: nothing is added to the Kids deck.
  */
 export class ChooseObjectiveDeckRule extends SimultaneousRule<number, MaterialType, LocationType> {
   getActivePlayerLegalMoves(player: number) {

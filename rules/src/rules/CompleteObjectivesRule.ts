@@ -27,8 +27,8 @@ export class CompleteObjectivesRule extends PlayerTurnRule<number, MaterialType,
 
   /**
    * One objective at a time: the card goes in front of its player, who draws a new one, then everything is
-   * checked again, since the card drawn may already be completed ([H7]).
-   * [H8] The active player first, then the others in the order of play.
+   * checked again, since the card drawn may already be completed (decision H7).
+   * Decision H8: The active player first, then the others in the order of play.
    */
   completeNextObjective(): MaterialMove<number, MaterialType, LocationType>[] {
     const colors = getTopColors(this.material(MaterialType.ColorTile).location(LocationType.PlayArea))
@@ -53,7 +53,7 @@ export class CompleteObjectivesRule extends PlayerTurnRule<number, MaterialType,
   }
 
   /**
-   * [H28] "tous les objectifs ont été réalisés": no card left in any hand nor in the decks the players draw from.
+   * Decision H28: "tous les objectifs ont été réalisés": no card left in any hand nor in the decks the players draw from.
    */
   get allCompetitiveObjectivesCompleted() {
     if (this.material(MaterialType.ObjectiveCard).location(LocationType.PlayerHand).length) return false
@@ -71,7 +71,7 @@ export class CompleteObjectivesRule extends PlayerTurnRule<number, MaterialType,
     const completed = objectives.filter((card) => !card.location.rotation && findPattern(colors, getObjectivePattern(MaterialType.ObjectiveCard, card.id as number)) !== undefined)
     const remaining = objectives.filter((card) => !card.location.rotation).length - completed.length
     // "La partie est gagnée si les 15 objectifs sont réalisés avant que l'une des pioches de tuiles Couleur ne soit épuisée."
-    // [H30] the objectives completed by the tile that empties a pile still count.
+    // Decision H30: the objectives completed by the tile that empties a pile still count.
     return [...completed.rotateItems(true), ...this.endTurn(remaining === 0)]
   }
 

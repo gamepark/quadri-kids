@@ -31,7 +31,7 @@ export const getTopColors = (playArea: Tiles): TopColors =>
 /**
  * Where a new tile can go: "Placer la nouvelle tuile bord à bord (pas en diagonale) avec une tuile Couleur
  * déjà présente ou par-dessus une tuile Couleur (pas de restriction au nombre d'étages)".
- * [H23] A tile may be laid on a tile of its own color: nothing forbids it.
+ * Decision H23: A tile may be laid on a tile of its own color: nothing forbids it.
  */
 export const getTileDestinations = (playArea: Tiles): Location<number, LocationType>[] => {
   const tops = getTopTiles(playArea)

@@ -21,7 +21,7 @@ const shapes: Record<Family, (outer: TileColor, middle: TileColor) => Pattern> =
     { x: 1, y: 1, color: m },
     { x: 2, y: 0, color: o }
   ],
-  // A line with one cell between the squares: X . Y . X ([H24] exactly one cell, as on the card)
+  // A line with one cell between the squares: X . Y . X (decision H24: exactly one cell, as on the card)
   spaced: (o, m) => [
     { x: 0, y: 0, color: o },
     { x: 2, y: 0, color: m },
@@ -56,7 +56,7 @@ const shapes: Record<Family, (outer: TileColor, middle: TileColor) => Pattern> =
 /**
  * The 42 Quadri Kids Objective cards, read card by card on the print PDF (mobile app, objectives.ts).
  * [card, family, outer color, middle color]. Card n is page 2n of 2026-6-18-cartes_objectif__QuadriKids.pdf.
- * [H31] only 2 spaced cards, and [H34] the unbalanced chevrons: the cards are kept as printed.
+ * Decision H31: only 2 spaced cards, and decision H34: the unbalanced chevrons: the cards are kept as printed.
  */
 const kidsCards: [number, Family, TileColor, TileColor][] = [
   [1, 'diagonal', M, M],
