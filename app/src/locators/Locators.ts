@@ -1,7 +1,9 @@
 import { LocationType } from '@gamepark/quadri-kids/material/LocationType'
 import { MaterialType } from '@gamepark/quadri-kids/material/MaterialType'
+import { tileColors } from '@gamepark/quadri-kids/material/TileColor'
 import { DeckLocator, ItemContext, ListLocator, Locator, MaterialContext } from '@gamepark/react-game'
 import { Location, MaterialItem } from '@gamepark/rules-api'
+import { cardHoverTransform } from './CardHover'
 import { PlayAreaLocator } from './PlayAreaLocator'
 import {
   completedGap,
@@ -16,13 +18,23 @@ import {
   seatScale,
   tilePileSpot
 } from './TableLayout'
+import { TilePileDescription } from './TilePileDescription'
 
 type Context = MaterialContext<number, MaterialType, LocationType>
+type Item = MaterialItem<number, LocationType>
+type ItemCtx = ItemContext<number, MaterialType, LocationType>
 
 /** Everything around the play area moves away from it as it grows. */
 const playAreaDependency = (context: Context) => getPlayAreaCells(context.rules)
 
-class TilePileLocator extends DeckLocator<number, MaterialType, LocationType> {
+/** Each pile shows a single tile, with the number of tiles left written under it. */
+class TilePileLocator extends Locator<number, MaterialType, LocationType> {
+  locationDescription = new TilePileDescription()
+
+  getLocations() {
+    return tileColors.map((color) => ({ type: LocationType.TilePile, id: color }))
+  }
+
   getCoordinates(location: Location<number, LocationType>, context: Context) {
     return tilePileSpot(context.rules, location.id)
   }
@@ -52,9 +64,17 @@ abstract class PlayerCardsLocator extends ListLocator<number, MaterialType, Loca
     return playAreaDependency(context)
   }
 
-  placeItem(item: MaterialItem<number, LocationType>, context: ItemContext<number, MaterialType, LocationType>): string[] {
-    const scale = seatScale(getSeat(context.rules, item.location.player!, context.player))
+  private scale(item: Item, context: ItemCtx) {
+    return seatScale(getSeat(context.rules, item.location.player!, context.player))
+  }
+
+  placeItem(item: Item, context: ItemCtx): string[] {
+    const scale = this.scale(item, context)
     return scale === 1 ? super.placeItem(item, context) : [...super.placeItem(item, context), `scale(${scale})`]
+  }
+
+  getHoverTransform(item: Item, context: ItemCtx) {
+    return cardHoverTransform(item, context, this.scale(item, context))
   }
 }
 
@@ -88,8 +108,12 @@ class CooperativeObjectivesLocator extends Locator<number, MaterialType, Locatio
     return playAreaDependency(context)
   }
 
-  placeItem(item: MaterialItem<number, LocationType>, context: ItemContext<number, MaterialType, LocationType>): string[] {
+  placeItem(item: Item, context: ItemCtx): string[] {
     return [...super.placeItem(item, context), `scale(${cooperativeScale})`]
+  }
+
+  getHoverTransform(item: Item, context: ItemCtx) {
+    return cardHoverTransform(item, context, cooperativeScale)
   }
 }
 
