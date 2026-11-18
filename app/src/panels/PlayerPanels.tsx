@@ -4,6 +4,7 @@ import { QuadriKidsRules } from '@gamepark/quadri-kids/QuadriKidsRules'
 import { StyledPlayerPanel, usePlayers, useRules } from '@gamepark/react-game'
 import { createPortal } from 'react-dom'
 import { ObjectiveBack } from '../images/Images'
+import PanelBackground from '../images/panel-background.svg?no-inline'
 
 /** Competitive: each panel shows the points of the player's completed objectives. */
 export const PlayerPanels = () => {
@@ -23,6 +24,7 @@ export const PlayerPanels = () => {
           player={player}
           css={panelPosition(index)}
           activeRing
+          backgroundImage={PanelBackground}
           mainCounter={competitive ? { image: ObjectiveBack, value: rules.getScore(player.id), imageCss: counterImageCss } : undefined}
         />
       ))}
