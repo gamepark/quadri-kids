@@ -11,6 +11,8 @@ import { createElement } from 'react'
 import { objectiveImages, ObjectiveBack, quadriObjectiveImages, QuadriObjectiveBack, tileImages } from '../images/Images'
 import { cardBorderRadius, cardSize, tileSize, tileThickness } from '../locators/TableLayout'
 import { ChooseDeckButton } from './ChooseDeckButton'
+import { ColorTileHelp } from './help/ColorTileHelp'
+import { ObjectiveCardHelp } from './help/ObjectiveCardHelp'
 
 type Item = MaterialItem<number, LocationType>
 type Context = ItemContext<number, MaterialType, LocationType>
@@ -23,6 +25,7 @@ class ColorTileDescription extends TokenDescription<number, MaterialType, Locati
   borderRadius = 0.15
   thickness = tileThickness
   images = tileImages
+  help = ColorTileHelp
 
   /** During their turn, a click on a pile chooses it, a second click lets go of it (decision D6, see `TileSelection`). */
   getShortClickLocalMove(context: Context) {
@@ -49,6 +52,7 @@ abstract class ObjectiveDescription extends CardDescription<number, MaterialType
   width = cardSize
   height = cardSize
   borderRadius = cardBorderRadius
+  help = ObjectiveCardHelp
 
   isMenuAlwaysVisible() {
     return true
