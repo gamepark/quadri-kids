@@ -54,6 +54,11 @@ abstract class ObjectiveDescription extends CardDescription<number, MaterialType
     return true
   }
 
+  /** Cooperative variant: "Lorsqu'un objectif est atteint, il est retourné face cachée." (still readable in its help dialog) */
+  isFlippedOnTable(item: Partial<Item>, context: Context) {
+    return item.location?.rotation === true || super.isFlippedOnTable(item, context)
+  }
+
   getItemMenu(item: Item, context: Context, legalMoves: Move[]) {
     const deckLocation = objectiveDeckLocation[context.type as ObjectiveCardType]
     if (item.location.type !== deckLocation) return undefined
