@@ -1,1 +1,5 @@
-export enum MaterialType {}
+export enum MaterialType {
+  ColorTile = 1,
+  ObjectiveCard,
+  QuadriObjectiveCard
+}

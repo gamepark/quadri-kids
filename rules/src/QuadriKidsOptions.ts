@@ -1,38 +1,39 @@
 import { getEnumValues, OptionsSpecV2 } from '@gamepark/rules-api'
-import { PlayerColor } from './PlayerColor'
-
-/**
- * This is the options for each player in the game.
- */
-type PlayerOptions = { id: PlayerColor }
+import { GameMode } from './GameMode'
 
 /**
  * This is the type of object that the game receives when a new game is started.
- * The first generic parameter, "{}", can be changed to include game options like variants or expansions.
  */
 export type QuadriKidsOptions = {
-  players: PlayerOptions[]
+  players: number
+  mode?: GameMode
+  /** Competitive: the players may choose to play with the Quadri Objective cards worth 4 and 5 (decision Q29). */
+  quadriCards?: boolean
+  /** Cooperative: "Ici il faut réaliser 15 objectifs", more to make it harder ([H30]). */
+  cooperativeObjectives?: number
 }
+
+/** "Pour augmenter la difficulté du jeu, après quelques parties, vous pouvez ajouter des cartes Objectif." */
+export const cooperativeObjectiveCounts = [15, 20, 25, 30]
+export const DEFAULT_COOPERATIVE_OBJECTIVES = 15
 
 /**
  * The structure of everything a host can choose before the game starts — and nothing else.
- *
- * Two things are deliberately absent, both because they change without the game changing:
- *
- * - **Text.** No labels, no help. They live in `app/public/options/<locale>.json`, published beside the
- *   game's translations and keyed by convention: `option.<option>`, `option.<option>.<value>`,
- *   `identities.<value>`, plus optional `.help` variants. See the files in that folder.
- * - **Subscription and competitive gates.** Which options require a subscription, and which are allowed
- *   in ranked play, are the platform's decisions. They live in its database and are edited there.
- *
- * The declaration is plain JSON on purpose: the platform snapshots it when the bundle is prepared, so
- * every screen reads the option space without downloading and running a game bundle.
- *
- * `players` must match the range declared for the game on the platform — it is the root that every other
- * range narrows, and a disagreement silently changes which tables exist.
+ * Texts live in `app/public/options/<locale>.json`.
+ * No player identities: the players are only numbered (decision of the publisher, 18/11/2026).
  */
 export const QuadriKidsOptionsSpecV2: OptionsSpecV2 = {
   specVersion: 2,
-  players: { min: 2, max: 4 },
-  identities: { values: getEnumValues(PlayerColor) }
+  players: { min: 1, max: 5 },
+  options: {
+    mode: {
+      kind: 'enum',
+      values: getEnumValues(GameMode).map((mode) => (mode === GameMode.Competitive ? { value: mode, playerCount: { min: 2 } } : mode))
+    },
+    quadriCards: { kind: 'boolean', requires: [{ option: 'mode', values: [GameMode.Competitive] }] },
+    cooperativeObjectives: { kind: 'enum', values: cooperativeObjectiveCounts, requires: [{ option: 'mode', values: [GameMode.Cooperative] }] }
+  }
 }
+
+/** A table of 1 can only play the cooperative variant. */
+export const getGameMode = (options: QuadriKidsOptions) => options.mode ?? (options.players === 1 ? GameMode.Cooperative : GameMode.Competitive)

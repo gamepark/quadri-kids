@@ -1,7 +1,15 @@
 {
-  "identities": "Couleur",
-  "identities.1": "Bleu",
-  "identities.2": "Rouge",
-  "identities.3": "Vert",
-  "identities.4": "Jaune"
+  "option.mode": "Mode de jeu",
+  "option.mode.1": "Compétitif",
+  "option.mode.1.help": "Chacun réalise ses propres objectifs. Le joueur qui a le plus de points gagne.",
+  "option.mode.2": "Coopératif",
+  "option.mode.2.help": "Ensemble, sans communiquer, réalisez tous les objectifs visibles avant qu'une pile de tuiles ne soit épuisée.",
+  "option.quadriCards": "Cartes Objectif de Quadri",
+  "option.quadriCards.help": "En début de partie, chaque joueur choisit de jouer avec les cartes Objectif de Quadri Kids ou avec celles de valeur 4 et 5 du jeu Quadri, plus difficiles : idéal pour équilibrer une partie entre parents et enfants.",
+  "option.cooperativeObjectives": "Nombre d'objectifs",
+  "option.cooperativeObjectives.help": "Ajoutez des objectifs pour augmenter la difficulté.",
+  "option.cooperativeObjectives.15": "15",
+  "option.cooperativeObjectives.20": "20",
+  "option.cooperativeObjectives.25": "25",
+  "option.cooperativeObjectives.30": "30"
 }

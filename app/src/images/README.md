@@ -30,6 +30,13 @@ cards/objectives/      Objective cards, 60 mm -> 600 x 600 px
 - **Card back**: every odd page of the PDF is the same back, with the logo shifted by a few pixels for
   printing; page 1 is used.
 - Encoding: `sharp(...).webp({ lossless: true, effort: 6 })`.
+- **Quadri Objective cards worth 4 and 5** (`cards/quadri-objectives/<n>.webp`, decision Q29): cut from
+  the print sheet `quadri/Cards/QUADRI-90 pcs Cards-front.jpg` (280 dpi, 60 mm = 661 px). The die-cut
+  line (pink, rounded corners, radius ≈ 31 px) is at x, y ∈ {141, 835, 1530, 2224, 2919, 3613, 4308,
+  5002, 5697, 6391, 7086} (rows: the first 4 values); a 662 px square is cut on it, everything outside a
+  rounded rectangle 5 px inside the line is painted white, then resized to 600 px. `n` is the number on
+  the sheet, left to right and top to bottom, row 4 starting at column 3 (the mobile app's numbering).
+  `back.webp` is cut the same way from `QUADRI-90 pcs Cards-back.jpg`, first cell.
 
 ## Platform images (`app/public/`)
 
