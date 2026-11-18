@@ -74,7 +74,11 @@ export class QuadriKidsSetup extends MaterialGameSetup<number, MaterialType, Loc
   }
 
   /** "Le joueur le plus jeune est le premier joueur": on Game Park, the seats are random, so the first seat starts. */
-  start() {
-    this.startPlayerTurn(RuleId.TheFirstStep, this.players[0])
+  start(options: QuadriKidsOptions) {
+    if (getGameMode(options) === GameMode.Competitive && options.quadriCards) {
+      this.startSimultaneousRule(RuleId.ChooseObjectiveDeck)
+    } else {
+      this.startPlayerTurn(RuleId.PlaceTile, this.players[0])
+    }
   }
 }

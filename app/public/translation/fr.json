@@ -1,1 +1,7 @@
-{}
+{
+  "header.choose-deck": "Les joueurs choisissent leurs cartes Objectif",
+  "header.choose-deck.you": "Choisissez vos cartes Objectif : Quadri Kids ou Quadri (4 et 5 points)",
+  "header.place-tile": "{{player}} pose une tuile",
+  "header.place-tile.you": "Prenez une tuile et posez-la à côté d'une autre, ou par-dessus",
+  "header.complete-objectives": "Validation des objectifs réalisés…"
+}
