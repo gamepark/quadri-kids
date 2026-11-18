@@ -1,6 +1,6 @@
-import { GameTemplateOptionsSpecV2 } from '@gamepark/game-template/GameTemplateOptions'
-import { GameTemplateRules } from '@gamepark/game-template/GameTemplateRules'
-import { GameTemplateSetup } from '@gamepark/game-template/GameTemplateSetup'
+import { QuadriKidsOptionsSpecV2 } from '@gamepark/quadri-kids/QuadriKidsOptions'
+import { QuadriKidsRules } from '@gamepark/quadri-kids/QuadriKidsRules'
+import { QuadriKidsSetup } from '@gamepark/quadri-kids/QuadriKidsSetup'
 import { GameProvider } from '@gamepark/react-game'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -12,10 +12,10 @@ import { Material } from './material/Material'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <GameProvider
-      game="game-template"
-      Rules={GameTemplateRules}
-      optionsSpec={GameTemplateOptionsSpecV2}
-      GameSetup={GameTemplateSetup}
+      game="quadri-kids"
+      Rules={QuadriKidsRules}
+      optionsSpec={QuadriKidsOptionsSpecV2}
+      GameSetup={QuadriKidsSetup}
       material={Material}
       locators={Locators}
       animations={gameAnimations}
