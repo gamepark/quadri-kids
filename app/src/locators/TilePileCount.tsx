@@ -4,7 +4,7 @@ import { MaterialType } from '@gamepark/quadri-kids/material/MaterialType'
 import { useRules } from '@gamepark/react-game'
 import { Location, MaterialRules } from '@gamepark/rules-api'
 
-/** The number of tiles left in a pile, written under the single tile that shows it. */
+/** The number of tiles left in a pile, on the top left corner of the single tile that shows it. */
 export const TilePileCount = ({ location }: { location: Location }) => {
   const rules = useRules<MaterialRules<number, MaterialType, LocationType>>()
   const count = rules?.material(MaterialType.ColorTile).location(LocationType.TilePile).id(location.id).getQuantity() ?? 0
@@ -13,9 +13,9 @@ export const TilePileCount = ({ location }: { location: Location }) => {
 
 const countCss = css`
   position: absolute;
-  top: calc(100% + 0.1em);
-  left: 50%;
-  transform: translateX(-50%);
+  top: -0.5em;
+  left: -0.5em;
+  transform: translateZ(1em);
   min-width: 1.4em;
   padding: 0 0.3em;
   border-radius: 0.4em;
