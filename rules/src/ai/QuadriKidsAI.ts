@@ -54,16 +54,16 @@ const endOfGameValue = (rules: QuadriKidsRules, player: number, colors: TopColor
   return myScore > othersBest ? 5000 : -500
 }
 
-/** The same position always gets the same move, without reading anything hidden. */
-const tieBreak = (game: Game, player: number, count: number) => {
+/** A draw among `count`: the same position always gets the same move, without reading anything hidden. */
+const draw = (game: Game, player: number, count: number, salt = 0) => {
   const tiles = game.items[MaterialType.ColorTile] ?? []
-  let hash = player
+  let hash = player * 101 + salt
   for (const tile of tiles) hash = (hash * 31 + (tile.location.x ?? 0) * 7 + (tile.location.y ?? 0) * 13 + (tile.id as number)) | 0
   return Math.abs(hash) % count
 }
 
 /** The tile moves of the bot, each with its value. */
-export const rankTileMoves = (game: Game, player: number): { move: MoveItem<number, MaterialType.ColorTile, LocationType>; value: number }[] => {
+export const rankTileMoves = (game: Game, player: number): { move: MoveItem<number, MaterialType.ColorTile, LocationType>; value: number; completes: boolean }[] => {
   const rules = new QuadriKidsRules(game)
   const targets = getTargets(rules, player)
   const tiles = rules.material(MaterialType.ColorTile)
@@ -73,17 +73,28 @@ export const rankTileMoves = (game: Game, player: number): { move: MoveItem<numb
     const color = tiles.getItem(move.itemIndex).id as TileColor
     const after: TopColors = new Map(colors)
     after.set(cellKey({ x: move.location.x!, y: move.location.y! }), color)
+    const completes = targets.some(({ pattern }) => patternProgress(after, pattern) === pattern.length)
     let value = evaluateTargets(after, targets)
     const left = tiles.getItem(move.itemIndex).quantity ?? 1
     if (left === 1) value += endOfGameValue(rules, player, after, targets)
     // In the cooperative variant, every turn counts: draw from the fullest piles.
     if (rules.gameMode === GameMode.Cooperative) value += left / 100
-    return { move, value }
+    return { move, value, completes }
   })
 }
 
+/**
+ * - easy, the default (decision of Ludo): the "facile" level of the mobile app. When a tile completes one of its
+ *   objectives, it lays it one time out of 2; otherwise it lays any tile.
+ * - medium: the best move of {@link rankTileMoves}.
+ */
+export type BotLevel = 'easy' | 'medium'
+
+/** Easy: probability to take the chance of completing an objective. */
+const EASY_TAKES_OBJECTIVE = 0.5
+
 /** The moves the bot plays now, for `player`. */
-export const chooseMoves = (game: Game, player: number): Move[] => {
+export const chooseMoves = (game: Game, player: number, level: BotLevel = 'easy'): Move[] => {
   const rules = new QuadriKidsRules(game)
   if (game.rule?.id === RuleId.ChooseObjectiveDeck) {
     const choices = rules.getLegalMoves(player).filter(isCustomMoveType<CustomMoveType, ChooseObjectiveDeck>(CustomMoveType.ChooseObjectiveDeck))
@@ -92,9 +103,15 @@ export const chooseMoves = (game: Game, player: number): Move[] => {
   }
   const ranked = rankTileMoves(game, player)
   if (!ranked.length) return rules.getLegalMoves(player).slice(0, 1)
+  if (level === 'easy') {
+    const completing = ranked.filter(({ completes }) => completes)
+    const takes = completing.length > 0 && draw(game, player, 100, 1) < EASY_TAKES_OBJECTIVE * 100
+    const pool = takes ? completing : ranked
+    return [pool[draw(game, player, pool.length, 2)].move]
+  }
   const best = Math.max(...ranked.map(({ value }) => value))
   const candidates = ranked.filter(({ value }) => value === best)
-  return [candidates[tieBreak(game, player, candidates.length)].move]
+  return [candidates[draw(game, player, candidates.length)].move]
 }
 
 /** The bot of the tutorial and of `game.bot()` in development. It never plays online. */
