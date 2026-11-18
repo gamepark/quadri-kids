@@ -10,6 +10,7 @@ import { App } from './App'
 import { Locators } from './locators/Locators'
 import { Material } from './material/Material'
 import { QuadriKidsScoring } from './scoring/QuadriKidsScoring'
+import { Tutorial } from './tutorial/Tutorial'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')!).render(
       animations={gameAnimations}
       scoring={new QuadriKidsScoring()}
       ai={QuadriKidsAI}
+      tutorial={new Tutorial()}
     >
       <App />
     </GameProvider>
