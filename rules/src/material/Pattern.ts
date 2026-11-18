@@ -69,3 +69,25 @@ export const findPattern = (colors: TopColors, pattern: Pattern): XYCoordinates[
   }
   return undefined
 }
+
+/**
+ * How many cells of the pattern already show the right color, in its best placement and orientation:
+ * the size of the pattern once it is completed. Placements are anchored on the tiles of the play area.
+ */
+export const patternProgress = (colors: TopColors, pattern: Pattern): number => {
+  let best = 0
+  for (const oriented of getOrientations(pattern)) {
+    for (const anchor of oriented) {
+      for (const [key, color] of colors) {
+        if (color !== anchor.color) continue
+        const [x, y] = key.split(',').map(Number)
+        const count = oriented.filter((cell) => colors.get(cellKey({ x: cell.x + x - anchor.x, y: cell.y + y - anchor.y })) === cell.color).length
+        if (count > best) {
+          best = count
+          if (best === pattern.length) return best
+        }
+      }
+    }
+  }
+  return best
+}

@@ -1,3 +1,4 @@
+import { QuadriKidsAI } from '@gamepark/quadri-kids/ai/QuadriKidsAI'
 import { QuadriKidsOptionsSpecV2 } from '@gamepark/quadri-kids/QuadriKidsOptions'
 import { QuadriKidsRules } from '@gamepark/quadri-kids/QuadriKidsRules'
 import { QuadriKidsSetup } from '@gamepark/quadri-kids/QuadriKidsSetup'
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')!).render(
       locators={Locators}
       animations={gameAnimations}
       scoring={new QuadriKidsScoring()}
+      ai={QuadriKidsAI}
     >
       <App />
     </GameProvider>
