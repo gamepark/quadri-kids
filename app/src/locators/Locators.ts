@@ -2,8 +2,8 @@ import { LocationType } from '@gamepark/quadri-kids/material/LocationType'
 import { MaterialType } from '@gamepark/quadri-kids/material/MaterialType'
 import { DeckLocator, ItemContext, ListLocator, Locator, MaterialContext } from '@gamepark/react-game'
 import { Location, MaterialItem } from '@gamepark/rules-api'
+import { PlayAreaLocator } from './PlayAreaLocator'
 import {
-  cellCenter,
   completedGap,
   completedSpot,
   cooperativeScale,
@@ -14,8 +14,7 @@ import {
   handSpot,
   objectiveDeckSpot,
   seatScale,
-  tilePileSpot,
-  tileThickness
+  tilePileSpot
 } from './TableLayout'
 
 type Context = MaterialContext<number, MaterialType, LocationType>
@@ -33,18 +32,13 @@ class TilePileLocator extends DeckLocator<number, MaterialType, LocationType> {
   }
 }
 
-/** A tile laid on another one is a layer higher: `z` is the number of tiles under it. */
-class PlayAreaLocator extends Locator<number, MaterialType, LocationType> {
-  getCoordinates(location: Location<number, LocationType>) {
-    return { ...cellCenter(location.x ?? 0, location.y ?? 0), z: (location.z ?? 0) * tileThickness }
-  }
-}
-
 class ObjectiveDeckLocator extends DeckLocator<number, MaterialType, LocationType> {
-  getItemCoordinates(item: MaterialItem<number, LocationType>, context: ItemContext<number, MaterialType, LocationType>) {
-    const { x = 0, y = 0, z = 0 } = super.getItemCoordinates(item, context)
-    const spot = objectiveDeckSpot(context.rules, context.type)
-    return { x: x + spot.x, y: y + spot.y, z }
+  constructor(private readonly type: MaterialType) {
+    super()
+  }
+
+  getCoordinates(_location: Location<number, LocationType>, context: Context) {
+    return objectiveDeckSpot(context.rules, this.type)
   }
 
   getPositionDependencies(_location: Location<number, LocationType>, context: Context) {
@@ -102,7 +96,8 @@ class CooperativeObjectivesLocator extends Locator<number, MaterialType, Locatio
 export const Locators: Partial<Record<LocationType, Locator<number, MaterialType, LocationType>>> = {
   [LocationType.TilePile]: new TilePileLocator(),
   [LocationType.PlayArea]: new PlayAreaLocator(),
-  [LocationType.ObjectiveDeck]: new ObjectiveDeckLocator(),
+  [LocationType.ObjectiveDeck]: new ObjectiveDeckLocator(MaterialType.ObjectiveCard),
+  [LocationType.QuadriObjectiveDeck]: new ObjectiveDeckLocator(MaterialType.QuadriObjectiveCard),
   [LocationType.PlayerHand]: new PlayerHandLocator(),
   [LocationType.CompletedObjectives]: new CompletedObjectivesLocator(),
   [LocationType.CooperativeObjectives]: new CooperativeObjectivesLocator()

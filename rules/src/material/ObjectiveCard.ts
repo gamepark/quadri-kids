@@ -1,3 +1,4 @@
+import { LocationType } from './LocationType'
 import { MaterialType } from './MaterialType'
 import { Pattern } from './Pattern'
 import { TileColor } from './TileColor'
@@ -153,6 +154,12 @@ export const quadriObjectiveCards: number[] = quadriCards.map(([card]) => card)
 /** The 2 kinds of Objective cards: Quadri Kids, and Quadri worth 4 and 5. */
 export const objectiveCardTypes = [MaterialType.ObjectiveCard, MaterialType.QuadriObjectiveCard] as const
 export type ObjectiveCardType = (typeof objectiveCardTypes)[number]
+
+/** Each kind of card has its own draw pile. */
+export const objectiveDeckLocation: Record<ObjectiveCardType, LocationType> = {
+  [MaterialType.ObjectiveCard]: LocationType.ObjectiveDeck,
+  [MaterialType.QuadriObjectiveCard]: LocationType.QuadriObjectiveDeck
+}
 
 export const getObjectivePattern = (type: ObjectiveCardType, card: number): Pattern =>
   type === MaterialType.ObjectiveCard ? objectivePatterns[card] : quadriObjectivePatterns[card]

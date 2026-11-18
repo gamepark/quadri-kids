@@ -52,7 +52,7 @@ export class QuadriKidsSetup extends MaterialGameSetup<number, MaterialType, Loc
     this.material(MaterialType.ObjectiveCard).createItems(objectiveCards.map((id) => ({ id, location: { type: LocationType.ObjectiveDeck } })))
     this.material(MaterialType.ObjectiveCard).shuffle()
     if (quadriCards) {
-      this.material(MaterialType.QuadriObjectiveCard).createItems(quadriObjectiveCards.map((id) => ({ id, location: { type: LocationType.ObjectiveDeck } })))
+      this.material(MaterialType.QuadriObjectiveCard).createItems(quadriObjectiveCards.map((id) => ({ id, location: { type: LocationType.QuadriObjectiveDeck } })))
       this.material(MaterialType.QuadriObjectiveCard).shuffle()
       return
     }

@@ -5,6 +5,7 @@ import { DevToolsHub, GameTable, GameTableNavigation, usePlayerId, useRules } fr
 import { MaterialRules } from '@gamepark/rules-api'
 import { tableBoundaries } from './locators/TableLayout'
 import { PlayerPanels } from './panels/PlayerPanels'
+import { TileSelection } from './tiles/TileSelection'
 
 export function GameDisplay() {
   const rules = useRules<MaterialRules<number, MaterialType, LocationType>>()
@@ -16,6 +17,7 @@ export function GameDisplay() {
       <GameTable {...tableBoundaries(rules, player)} margin={margin} css={process.env.NODE_ENV === 'development' && tableBorder}>
         <GameTableNavigation />
         <PlayerPanels />
+        <TileSelection />
         {process.env.NODE_ENV === 'development' && <DevToolsHub fabBottom="calc(5em)" />}
       </GameTable>
     </>

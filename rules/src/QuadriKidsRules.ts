@@ -45,7 +45,7 @@ export class QuadriKidsRules
       [LocationType.CooperativeObjectives]: new PositiveSequenceStrategy()
     },
     [MaterialType.QuadriObjectiveCard]: {
-      [LocationType.ObjectiveDeck]: new PositiveSequenceStrategy(),
+      [LocationType.QuadriObjectiveDeck]: new PositiveSequenceStrategy(),
       [LocationType.PlayerHand]: new PositiveSequenceStrategy(),
       [LocationType.CompletedObjectives]: new PositiveSequenceStrategy()
     }
@@ -58,7 +58,7 @@ export class QuadriKidsRules
       [LocationType.PlayerHand]: hideItemIdToOthers
     },
     [MaterialType.QuadriObjectiveCard]: {
-      [LocationType.ObjectiveDeck]: hideItemId,
+      [LocationType.QuadriObjectiveDeck]: hideItemId,
       [LocationType.PlayerHand]: hideItemIdToOthers
     }
   }

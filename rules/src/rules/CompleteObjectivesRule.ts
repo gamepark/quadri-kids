@@ -2,7 +2,7 @@ import { MaterialMove, PlayerTurnRule } from '@gamepark/rules-api'
 import { GameMode } from '../GameMode'
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'
-import { getObjectivePattern, ObjectiveCardType, objectiveCardTypes } from '../material/ObjectiveCard'
+import { getObjectivePattern, ObjectiveCardType, objectiveCardTypes, objectiveDeckLocation } from '../material/ObjectiveCard'
 import { findPattern } from '../material/Pattern'
 import { getTopColors } from '../material/PlayArea'
 import { tileColors } from '../material/TileColor'
@@ -41,7 +41,7 @@ export class CompleteObjectivesRule extends PlayerTurnRule<number, MaterialType,
           .player(player)
           .filter((card) => card.id !== undefined && findPattern(colors, getObjectivePattern(type, card.id as number)) !== undefined)
         if (!completed.length) continue
-        const deck = this.material(type).location(LocationType.ObjectiveDeck).deck()
+        const deck = this.material(type).location(objectiveDeckLocation[type]).deck()
         return [
           completed.limit(1).moveItem({ type: LocationType.CompletedObjectives, player }),
           ...(deck.length ? [deck.dealOne({ type: LocationType.PlayerHand, player })] : []),
@@ -60,7 +60,7 @@ export class CompleteObjectivesRule extends PlayerTurnRule<number, MaterialType,
     if (this.material(MaterialType.QuadriObjectiveCard).location(LocationType.PlayerHand).length) return false
     return objectiveCardTypes.every((type: ObjectiveCardType) => {
       const used = this.material(type).location(LocationType.CompletedObjectives).length > 0
-      return !used || this.material(type).location(LocationType.ObjectiveDeck).length === 0
+      return !used || this.material(type).location(objectiveDeckLocation[type]).length === 0
     })
   }
 

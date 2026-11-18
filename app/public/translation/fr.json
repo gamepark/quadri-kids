@@ -1,7 +1,16 @@
 {
   "header.choose-deck": "Les joueurs choisissent leurs cartes Objectif",
-  "header.choose-deck.you": "Choisissez vos cartes Objectif : Quadri Kids ou Quadri (4 et 5 points)",
-  "header.place-tile": "{{player}} pose une tuile",
-  "header.place-tile.you": "Prenez une tuile et posez-la à côté d'une autre, ou par-dessus",
-  "header.complete-objectives": "Validation des objectifs réalisés…"
+  "header.choose-deck.you": "Jouez avec les cartes Objectif <kids>Quadri Kids</kids> ou <quadri>Quadri (4 et 5 points)</quadri>",
+  "header.choose-deck.others": "Les autres joueurs choisissent leurs cartes Objectif",
+  "header.place-tile": "{player} pose une tuile",
+  "header.place-tile.you": "Posez une tuile à côté d’une autre ou par-dessus",
+  "header.complete-objectives": "Validation des objectifs réalisés",
+  "deck.choose": "Choisir",
+  "game-over.win": "{player} gagne avec {score, plural, one {# point} other {# points}}",
+  "game-over.you-win": "Vous gagnez avec {score, plural, one {# point} other {# points}} !",
+  "game-over.tie": "Égalité à {score, plural, one {# point} other {# points}}",
+  "game-over.cooperative.won": "Bravo, vous avez réalisé les {total} objectifs !",
+  "game-over.cooperative.lost": "Perdu : {done} objectifs réalisés sur {total}",
+  "scoring.objectives": "Objectifs réalisés",
+  "scoring.points": "Points"
 }

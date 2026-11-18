@@ -1,7 +1,7 @@
 import { CustomMove, isCustomMoveType, SimultaneousRule } from '@gamepark/rules-api'
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'
-import { HAND_SIZE, objectiveCardTypes } from '../material/ObjectiveCard'
+import { HAND_SIZE, objectiveCardTypes, objectiveDeckLocation } from '../material/ObjectiveCard'
 import { ChooseObjectiveDeck, CustomMoveType } from './CustomMoveType'
 import { RuleId } from './RuleId'
 
@@ -19,7 +19,7 @@ export class ChooseObjectiveDeckRule extends SimultaneousRule<number, MaterialTy
     if (!isCustomMoveType<CustomMoveType, ChooseObjectiveDeck>(CustomMoveType.ChooseObjectiveDeck)(move)) return []
     const { player, deck } = move.data!
     return [
-      ...this.material(deck).location(LocationType.ObjectiveDeck).deck().deal({ type: LocationType.PlayerHand, player }, HAND_SIZE),
+      ...this.material(deck).location(objectiveDeckLocation[deck]).deck().deal({ type: LocationType.PlayerHand, player }, HAND_SIZE),
       this.endPlayerTurn(player)
     ]
   }

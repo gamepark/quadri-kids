@@ -43,7 +43,7 @@ describe('Setup', () => {
   it('with the Quadri cards, prepares both draw piles and deals nothing yet', () => {
     const rules = setup({ players: 3, mode: GameMode.Competitive, quadriCards: true })
     expect(rules.material(MaterialType.ObjectiveCard).location(LocationType.ObjectiveDeck).length).toBe(42)
-    expect(rules.material(MaterialType.QuadriObjectiveCard).location(LocationType.ObjectiveDeck).length).toBe(26)
+    expect(rules.material(MaterialType.QuadriObjectiveCard).location(LocationType.QuadriObjectiveDeck).length).toBe(26)
     expect(rules.material(MaterialType.ObjectiveCard).location(LocationType.PlayerHand).length).toBe(0)
   })
 
