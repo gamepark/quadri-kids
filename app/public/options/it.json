@@ -1,1 +1,15 @@
-{}
+{
+  "option.mode": "Modalità di gioco",
+  "option.mode.1": "Competitiva",
+  "option.mode.1.help": "Ognuno realizza i propri obiettivi. Vince il giocatore con più punti.",
+  "option.mode.2": "Cooperativa",
+  "option.mode.2.help": "Insieme, senza comunicare, realizzate tutti gli obiettivi visibili prima che una pila di tessere sia esaurita.",
+  "option.quadriCards": "Carte Obiettivo di Quadri",
+  "option.quadriCards.help": "A inizio partita, ogni giocatore sceglie se giocare con le carte Obiettivo di Quadri Kids o con quelle di valore 4 e 5 del gioco Quadri, più difficili: ideale per equilibrare una partita tra genitori e figli.",
+  "option.cooperativeObjectives": "Numero di obiettivi",
+  "option.cooperativeObjectives.help": "Aggiungi obiettivi per aumentare la difficoltà.",
+  "option.cooperativeObjectives.15": "15",
+  "option.cooperativeObjectives.20": "20",
+  "option.cooperativeObjectives.25": "25",
+  "option.cooperativeObjectives.30": "30"
+}

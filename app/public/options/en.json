@@ -1,1 +1,15 @@
-{}
+{
+  "option.mode": "Game mode",
+  "option.mode.1": "Competitive",
+  "option.mode.1.help": "Each player completes their own objectives. The player with the most points wins.",
+  "option.mode.2": "Cooperative",
+  "option.mode.2.help": "Together, without communicating, complete all the visible objectives before a tile pile runs out.",
+  "option.quadriCards": "Quadri Objective cards",
+  "option.quadriCards.help": "At the start of the game, each player chooses to play with the Quadri Kids Objective cards or with the harder 4 and 5 point cards from the Quadri game: ideal to balance a game between parents and children.",
+  "option.cooperativeObjectives": "Number of objectives",
+  "option.cooperativeObjectives.help": "Add objectives to increase difficulty.",
+  "option.cooperativeObjectives.15": "15",
+  "option.cooperativeObjectives.20": "20",
+  "option.cooperativeObjectives.25": "25",
+  "option.cooperativeObjectives.30": "30"
+}

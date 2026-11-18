@@ -1,1 +1,15 @@
-{}
+{
+  "option.mode": "Режим игры",
+  "option.mode.1": "Соревновательный",
+  "option.mode.1.help": "Каждый выполняет свои цели. Побеждает игрок, набравший больше всего очков.",
+  "option.mode.2": "Кооперативный",
+  "option.mode.2.help": "Вместе, не общаясь, выполните все видимые цели, прежде чем опустеет одна из стопок плиток.",
+  "option.quadriCards": "Карты целей Quadri",
+  "option.quadriCards.help": "В начале игры каждый игрок выбирает, играть ли картами целей Quadri Kids или более сложными картами на 4 и 5 очков из игры Quadri: идеально, чтобы уравнять шансы родителей и детей.",
+  "option.cooperativeObjectives": "Количество целей",
+  "option.cooperativeObjectives.help": "Добавьте цели, чтобы повысить сложность.",
+  "option.cooperativeObjectives.15": "15",
+  "option.cooperativeObjectives.20": "20",
+  "option.cooperativeObjectives.25": "25",
+  "option.cooperativeObjectives.30": "30"
+}

@@ -1,1 +1,15 @@
-{}
+{
+  "option.mode": "Modo de juego",
+  "option.mode.1": "Competitivo",
+  "option.mode.1.help": "Cada uno cumple sus propios objetivos. Gana el jugador con más puntos.",
+  "option.mode.2": "Cooperativo",
+  "option.mode.2.help": "Juntos, sin comunicaros, cumplid todos los objetivos visibles antes de que se agote una pila de losetas.",
+  "option.quadriCards": "Cartas de Objetivo de Quadri",
+  "option.quadriCards.help": "Al principio de la partida, cada jugador elige jugar con las cartas de Objetivo de Quadri Kids o con las de valor 4 y 5 del juego Quadri, más difíciles: ideal para equilibrar una partida entre padres e hijos.",
+  "option.cooperativeObjectives": "Número de objetivos",
+  "option.cooperativeObjectives.help": "Añade objetivos para aumentar la dificultad.",
+  "option.cooperativeObjectives.15": "15",
+  "option.cooperativeObjectives.20": "20",
+  "option.cooperativeObjectives.25": "25",
+  "option.cooperativeObjectives.30": "30"
+}

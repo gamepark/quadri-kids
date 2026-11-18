@@ -1,1 +1,15 @@
-{}
+{
+  "option.mode": "Spielmodus",
+  "option.mode.1": "Kompetitiv",
+  "option.mode.1.help": "Jeder erfüllt seine eigenen Ziele. Wer die meisten Punkte hat, gewinnt.",
+  "option.mode.2": "Kooperativ",
+  "option.mode.2.help": "Erfüllt gemeinsam, ohne euch abzusprechen, alle sichtbaren Ziele, bevor ein Plättchenstapel aufgebraucht ist.",
+  "option.quadriCards": "Quadri-Zielkarten",
+  "option.quadriCards.help": "Zu Beginn wählt jeder Spieler, ob er mit den Zielkarten von Quadri Kids oder mit den schwierigeren Karten mit 4 und 5 Punkten aus dem Spiel Quadri spielt: ideal, um eine Partie zwischen Eltern und Kindern auszugleichen.",
+  "option.cooperativeObjectives": "Anzahl der Ziele",
+  "option.cooperativeObjectives.help": "Füge Ziele hinzu, um die Schwierigkeit zu erhöhen.",
+  "option.cooperativeObjectives.15": "15",
+  "option.cooperativeObjectives.20": "20",
+  "option.cooperativeObjectives.25": "25",
+  "option.cooperativeObjectives.30": "30"
+}
