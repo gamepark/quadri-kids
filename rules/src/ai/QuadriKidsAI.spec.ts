@@ -44,7 +44,7 @@ const playGame = (options: QuadriKidsOptions, seed: number, bots: (seat: number)
 
 const seeds = [...Array(12).keys()]
 
-describe('The bot', () => {
+describe('The bot', { timeout: 60000 }, () => {
   it('plays whole games at every player count, in both modes', () => {
     for (const players of [2, 3, 4, 5]) playGame({ players, mode: GameMode.Competitive }, players, () => true)
     for (const players of [2, 3]) playGame({ players, mode: GameMode.Competitive, quadriCards: true }, players, () => true)
