@@ -1,0 +1,63 @@
+Code le tutoriel de Quadri Kids.
+Partie compétitive à 2 joueurs, avec les cartes Quadri Kids. L'adversaire s'appelle Antoine (Antoine Huchin, co-auteur), avec un avatar.
+Distribution aléatoire, sauf ce dont le scénario a besoin :
+- carré de départ : jaune (0,0), magenta (1,0), noire (0,1), cyan (1,1) ;
+- main du joueur : carte 25 (ligne jaune-noir-jaune) et carte 30 (chevron jaune-magenta-jaune) ;
+- carte piochée par le joueur au tour 1 : une carte qu'il ne peut pas réaliser au tour 2 ;
+- tour 1 d'Antoine : coup imposé, loin des cases du scénario (pour ne pas recouvrir la tuile cyan ni la tuile jaune posée par le joueur).
+Ensuite, Antoine est joué par le bot (niveau facile).
+
+Bienvenue dans le tutoriel de Quadri Kids !
+
+Dans Quadri Kids, tous les joueurs posent des tuiles Couleur dans une zone de jeu commune, pour reproduire les formes de leurs cartes Objectif.
+(focus : la zone de jeu)
+
+Voici les 4 piles de tuiles Couleur : 12 tuiles de chaque couleur au départ.
+Le chiffre en haut à gauche indique combien il en reste.
+(focus : les 4 piles)
+
+Voici vos 2 cartes Objectif. Chacune montre une forme de 3 carrés à réaliser avec les tuiles Couleur.
+Elle rapporte 3 points en fin de partie.
+(focus : la main du joueur)
+
+À tout moment, cliquez sur un élément du jeu pour savoir à quoi il sert.
+
+À votre tour, vous piochez une tuile Couleur dans la pile de votre choix et la posez :
+- bord à bord (pas en diagonale) avec une tuile déjà présente,
+- ou par-dessus une tuile.
+
+Regardez votre carte jaune-noir-jaune : il ne manque qu'une tuile jaune sous la tuile noire !
+(focus : la carte 25, la tuile jaune et la tuile noire de la colonne de gauche)
+
+Cliquez sur la pile jaune, puis sur la case sous la tuile noire.
+(coup imposé : tuile jaune en (0,2))
+
+Bravo, vous avez réalisé votre premier objectif !
+La carte est posée face visible devant vous, et vous en piochez une nouvelle pour toujours en avoir 2 en main.
+(focus : la carte réalisée et la nouvelle carte)
+
+C'est au tour d'Antoine.
+(Antoine joue son coup imposé)
+
+Un objectif réalisé est validé à tout moment, même pendant le tour d'un autre joueur.
+Attention : une tuile posée par Antoine peut donc réaliser un de vos objectifs !
+
+Regardez votre carte jaune-magenta-jaune.
+Les 2 tuiles jaunes sont déjà là, mais une tuile cyan occupe la place du magenta.
+(focus : la carte 30, les 2 tuiles jaunes et la tuile cyan)
+
+Vous pouvez poser une tuile par-dessus une autre, sans limite d'étages : seule la tuile du dessus compte.
+Posez une tuile magenta sur la tuile cyan.
+(coup imposé : tuile magenta en (1,1), par-dessus la cyan)
+
+Encore un objectif !
+Une forme peut être réalisée comme sur la carte, dans un miroir, ou tournée.
+
+La partie prend fin lorsqu'une pile de tuiles Couleur est épuisée : le joueur actif termine alors son tour.
+Elle se termine aussi immédiatement si tous les objectifs ont été réalisés.
+(focus : les 4 piles)
+
+Le joueur qui a le plus de points gagne.
+(focus : les panneaux des joueurs)
+
+À vous de terminer la partie contre Antoine. Bonne chance !
